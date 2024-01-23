@@ -21,6 +21,12 @@ const SIDE_BARS = [
     icon: <FavoriteIcon />,
     value: "",
   },
+  {
+    label: "Notes",
+    url: "/notes",
+    icon: <FavoriteIcon />,
+    value: "",
+  },
 ];
 
 export { SIDE_BARS };
