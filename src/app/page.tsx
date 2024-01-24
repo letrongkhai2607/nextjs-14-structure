@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import { lazy } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
-import MansonryGrid from "@/containers/masonry-grid";
+import MansonryGrid from "@/components/masonry-grid";
 
 const Upload = lazy(() => import("@/components/upload"));
 const PhotoContainer = lazy(() => import("@/containers/photo-container"));

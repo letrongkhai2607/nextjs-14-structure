@@ -10,7 +10,7 @@ export type APIResponse<T = any> = {
 };
 export const publicApi = (subPath: string = "") => {
   const api = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_API_BASE}/${subPath}`,
+    baseURL: ``,
     headers: {
       "Content-Type": "application/json",
     },
@@ -44,7 +44,8 @@ export const publicApi = (subPath: string = "") => {
 export const privateApi = (subPath: string = "") => {
   const api = axios.create({
     // withCredentials: true,
-    baseURL: `${process.env.NEXT_PUBLIC_API_BASE}/${subPath}`,
+    // baseURL: `${process.env.NEXT_PUBLIC_API_BASE}/${subPath}`,
+    baseURL: ``,
     headers: {
       "Content-Type": "application/json",
       "x-api-key": `${process.env.NEXT_PUBLIC_API_KEY}`,

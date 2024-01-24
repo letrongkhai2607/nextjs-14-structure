@@ -9,7 +9,7 @@ const Sidebar = () => {
   const renderSidebar = () => {
     return SIDE_BARS.map((sidebar) => {
       return (
-        <Link href={`${sidebar.url}`}>
+        <Link key={sidebar.value} href={`${sidebar.url}`}>
           <Stack
             key={sidebar.label}
             flexDirection={`row`}

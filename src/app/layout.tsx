@@ -3,6 +3,7 @@ import { Container, Grid } from "@mui/material";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import RTK_Providers from "./providers/rtk-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,8 +26,7 @@ export default function RootLayout({
               <Sidebar />
             </Grid>
             <Grid p={`16px`} item xs={12} md={10}>
-              {/* <UserProvider>{children}</UserProvider> */}
-              {children}
+              <RTK_Providers>{children}</RTK_Providers>
             </Grid>
           </Grid>
         </Container>

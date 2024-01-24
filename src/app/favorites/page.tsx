@@ -1,5 +1,5 @@
 import Upload from "@/components/upload";
-import MansonryGrid from "@/containers/masonry-grid";
+import MansonryGrid from "@/components/masonry-grid";
 import PhotoContainer from "@/containers/photo-container";
 import { useGetFavoriteImages } from "@/hooks";
 import React from "react";

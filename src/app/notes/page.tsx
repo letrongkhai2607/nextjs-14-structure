@@ -1,18 +1,13 @@
-import { sql } from "@vercel/postgres";
-import React from "react";
-import { fetchAllNotes } from "../lib";
+import React, { Suspense } from "react";
+import Notes from "../../components/notes";
 
-const Page = async ({
-  params,
-}: {
-  params: { user: string };
-}): Promise<JSX.Element> => {
-  const { rows } = await sql`SELECT * FROM Notes;`;
+const Page = ({ params }: { params: {} }) => {
   return (
     <div>
-      {rows.map((note) => (
-        <div>{note.name}</div>
-      ))}
+      <Suspense fallback={<div>Loading</div>}>
+        {/* @ts-expect-error Async */}
+        <Notes />
+      </Suspense>
     </div>
   );
 };

@@ -17,4 +17,25 @@ const getPublicChargeItems = async () => {
   }
 };
 
-export { getChargeItems, getPublicChargeItems };
+const getNotes = async () => {
+  try {
+    let response = await customAxios.public.get(`api/get-notes`, {
+      headers: {
+        "Cache-Control": "no-cache",
+      },
+    });
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+const addNote = async (payload: { name: string }) => {
+  try {
+    let response = await customAxios.public.post(`api/add-note`, {
+      data: payload,
+    });
+  } catch (error) {
+    throw error;
+  }
+};
+export { getChargeItems, getPublicChargeItems, getNotes, addNote };
