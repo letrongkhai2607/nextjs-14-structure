@@ -18,7 +18,7 @@ const Photo = ({
   const imageStyles = {
     width: "100%",
     height: "auto",
-    borderRadius: "0.5rem",
+    borderRadius: "0.25rem",
   };
   const isFavorited = tags.includes("favorites");
   const handleUpdateTag = async () => {

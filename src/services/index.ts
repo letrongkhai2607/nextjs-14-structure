@@ -19,11 +19,7 @@ const getPublicChargeItems = async () => {
 
 const getNotes = async () => {
   try {
-    let response = await customAxios.public.get(`api/get-notes`, {
-      headers: {
-        "Cache-Control": "no-cache",
-      },
-    });
+    let response = await customAxios.public.get(`api/get-notes`, {});
     return response;
   } catch (error) {
     throw error;
@@ -38,4 +34,15 @@ const addNote = async (payload: { name: string }) => {
     throw error;
   }
 };
-export { getChargeItems, getPublicChargeItems, getNotes, addNote };
+
+const login = async (payload: { phone: string; password: string }) => {
+  try {
+    let response = await customAxios.public.post(`api/login`, {
+      data: payload,
+    });
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+export { getChargeItems, getPublicChargeItems, getNotes, addNote, login };

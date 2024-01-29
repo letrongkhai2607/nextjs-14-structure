@@ -1,49 +1,43 @@
 "use client";
 
+import CustomSkeleton from "@/components/custom-skeleton";
 import SimpleSnackbar from "@/components/nackbar";
+import NoteItem from "@/components/note-item";
 import CustomLoading from "@/containers/loading";
 import { useMutationAddNote } from "@/hooks/useMutationAddNote";
 import { useQueryNotes } from "@/hooks/useQueryNotes";
 import { SendTwoTone } from "@mui/icons-material";
-import { Button, Stack, TextField, Typography } from "@mui/material";
+import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 
 const Page = () => {
   const { data, isLoading } = useQueryNotes();
-  const [note, setNote] = React.useState("");
 
+  const renderSkeleton = () => {
+    return [1, 2, 3, 4, 5, 6, 7, 8].map((element) => (
+      <Grid item xs={6} md={3}>
+        <CustomSkeleton />
+      </Grid>
+    ));
+  };
   return (
-    <CustomLoading isLoading={isLoading}>
+    <CustomLoading isLoading={false}>
       <div>
-        <Stack
-          flexDirection={`row`}
-          gap={`2rem`}
-          justifyContent={`space-between`}
-          alignItems={`center`}
-          sx={{
-            background: "white",
-            borderRadius: "0.25rem",
-            padding: "0.5rem",
-            mb: "1rem",
-            color: "black",
-          }}
-        >
-          <Typography>Client Component with RTK</Typography>
-          <TextField
-            size="small"
-            defaultValue={note}
-            placeholder="Enter note name..."
-            onBlur={(event) => setNote(event.target.value)}
-            sx={{
-              flex: 1,
-            }}
-          />
-          <SimpleSnackbar note={note} setNote={setNote} />
-        </Stack>
-
-        {data?.data.notes.rows.map((note: { name: string }, index: number) => (
-          <div key={index}>{note.name}</div>
-        ))}
+        <Link href="/notes-client-component/new">New</Link>
+        <Grid my={2} container spacing={2}>
+          {isLoading ? (
+            <>{renderSkeleton()}</>
+          ) : (
+            data?.data.notes.rows.map(
+              (note: { name: string }, index: number) => (
+                <Grid item xs={6} md={3}>
+                  <NoteItem note={note} />
+                </Grid>
+              )
+            )
+          )}
+        </Grid>
       </div>
     </CustomLoading>
   );

@@ -4,6 +4,7 @@ import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useMutationAddNote } from "@/hooks/useMutationAddNote";
+import { redirect } from "next/navigation";
 
 export default function SimpleSnackbar({
   note,
