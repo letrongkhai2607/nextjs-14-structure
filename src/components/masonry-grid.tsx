@@ -15,8 +15,9 @@ const MansonryGrid = ({ result }: { result: any }) => {
 
   const renderColumns = (index: number) => {
     const first = getColumns(index);
-    return first.map((element: ICloudinaryItem) => (
+    return first.map((element: ICloudinaryItem, index: number) => (
       <Photo
+        key={element.public_id}
         publicId={element.public_id}
         url={element.url}
         tags={element.tags}

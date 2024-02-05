@@ -16,7 +16,7 @@ const Page = () => {
 
   const renderSkeleton = () => {
     return [1, 2, 3, 4, 5, 6, 7, 8].map((element) => (
-      <Grid item xs={6} md={3}>
+      <Grid key={element} item xs={6} md={3}>
         <CustomSkeleton />
       </Grid>
     ));
@@ -31,7 +31,7 @@ const Page = () => {
           ) : (
             data?.data.notes.rows.map(
               (note: { name: string }, index: number) => (
-                <Grid item xs={6} md={3}>
+                <Grid key={index} item xs={6} md={3}>
                   <NoteItem note={note} />
                 </Grid>
               )

@@ -25,6 +25,14 @@ const getNotes = async () => {
     throw error;
   }
 };
+const getNote = async (name?: string) => {
+  try {
+    let response = await customAxios.public.get(`api/get-note/${name}`, {});
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
 const addNote = async (payload: { name: string }) => {
   try {
     let response = await customAxios.public.post(`api/add-note`, {
@@ -45,4 +53,11 @@ const login = async (payload: { phone: string; password: string }) => {
     throw error;
   }
 };
-export { getChargeItems, getPublicChargeItems, getNotes, addNote, login };
+export {
+  getChargeItems,
+  getPublicChargeItems,
+  getNotes,
+  addNote,
+  login,
+  getNote,
+};
